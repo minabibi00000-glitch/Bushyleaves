@@ -1,4 +1,5 @@
 #include "connectedglass.hpp"
+#include "bushyleaves.hpp"
 
 #include "core/memory/Hooks.hpp"
 #include <bedrocktools/sdk/Memory.hpp>
@@ -378,10 +379,28 @@ void renderFace(
 
     if (!texture) {
         original(tessellator, meshTessellator, block, position, inputTexture);
+        BushyLeavesRenderExtras(
+            original,
+            static_cast<BushyLeavesFace>(face),
+            tessellator,
+            meshTessellator,
+            block,
+            reinterpret_cast<const BushyLeavesVec3Raw*>(position),
+            inputTexture
+        );
         return;
     }
     FaceStateGuard state(tessellator, face);
     original(tessellator, meshTessellator, block, position, texture->data());
+    BushyLeavesRenderExtras(
+        original,
+        static_cast<BushyLeavesFace>(face),
+        tessellator,
+        meshTessellator,
+        block,
+        reinterpret_cast<const BushyLeavesVec3Raw*>(position),
+        texture->data()
+    );
 }
 
 template <GlassFace Face>
