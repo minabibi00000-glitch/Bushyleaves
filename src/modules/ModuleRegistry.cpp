@@ -42,6 +42,7 @@
 #include "visual/lightoverlay.hpp"
 #include "visual/shulkerpreview.hpp"
 #include "visual/connectedglass.hpp"
+#include "visual/bushyleaves.hpp"
 #include "player/skinstealer.hpp"
 #include "player/autogg.hpp"
 #include "misc/hiveutils.hpp"
@@ -134,5 +135,6 @@ void registerAllModules() {
     registry.emplace<LightOverlayModule>();
     registry.emplace<ShulkerPreviewModule>();
     registry.emplace<ConnectedGlassModule>();
+    registry.emplace<BushyLeavesModule>();
     registry.emplace<ForceGlobalRPModule>();
 }
